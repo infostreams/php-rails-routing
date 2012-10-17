@@ -20,6 +20,7 @@ In smaller steps, this would translate to:
 
 Examples
 --------
+(these examples assume the script is running in the 'example/' subdirectory)
 
 	require('router.php');
 	
