@@ -25,21 +25,21 @@ $r->map(":filename\.:ext",
 		// regular expressions determine what is valid for 'filename' and 'ext'
 		array("filename"=>'[\w\d_-]+', "ext"=>"(txt|json)"));
 
+// generic mapping for http://<location>/example/<controller>/<id>
+// -> for example http://<location>/example/person/2 will run
+//    PersonController->view(2)
+// -> or http://<location>/example/organisation/3 will run
+//    OrganisationController->view(3)
+$r->map(":controller/:id",
+	array('action'=>'view'),
+	array("id"=>"[0-9]+")); // only allow numeric values for 'id'
+
 // generic mapping for http://<location>/example/<controller>/<action>
 // -> for example http://<location>/example/person/all will run 
 //    PersonController->all()
 // -> or http://<location>/example/organisation/add will run
 //    OrganisationController->add()
 $r->map(":controller/:action");
-
-// generic mapping for http://<location>/example/<controller>/<id>
-// -> for example http://<location>/example/person/2 will run 
-//    PersonController->view(2)
-// -> or http://<location>/example/organisation/3 will run
-//    OrganisationController->view(3)
-$r->map(":controller/:id", 
-		array('action'=>'view'), 
-		array("id"=>"[0-9]+")); // only allow numeric values for 'id'
 
 $r->run();
 
@@ -63,7 +63,7 @@ class HelloController {
 			"some-filename.xml",
 			"person/2",
 			"person/all",
-			"organisation/github",
+			"organisation/5",
 			"organisation/add",
 			"image.jpg", // it won't interfere with getting existing external files
 		);
