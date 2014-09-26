@@ -64,7 +64,14 @@ Examples
 			array('action'=>'view'), 
 			array("id"=>"[0-9]+")); // only allow numeric values for 'id'
 	
+	
+	// any other initialization you need
+
+	// Make sure to or require() your controller classes' files prior to $r->run()
+	// (same-file controllers can go at the bottom of index.php)
+
 	$r->run();
+	?>
 
 
 
